@@ -1,8 +1,5 @@
-@charset "utf-8";
 
-
-
-/*リセットCSS（sanitize.css）の読み込み
+/*リセットCSS（sanitize.css）の読み込み！！！
 ---------------------------------------------------------------------------*/
 @import url("https://unpkg.com/sanitize.css");
 
@@ -840,4 +837,144 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 	width: 1px;				/*線の幅の代わりになります*/
 	animation-name: h;		/*上の「@keyframes」で使うアニメーション名の指定。*/
 	animation-delay: 0.6s;	/*アニメーションを0.6秒遅れてスタートさせる。*/
+}
+/*背景色
+---------------------------------------------------------------------------*/
+.background2-parts {
+	background: linear-gradient(45deg, #f9d4e1, #f9f2d4);	/*背景グラデーション。45度の角度。「#f9d4e1」から「#f9f2d4」になる。*/
+	color: #555;		/*文字色*/
+}
+/*h2タグ
+---------------------------------------------------------------------------*/
+#contents h2.titleset5-parts {
+	font-size: 2rem;		/*文字サイズ。2倍。*/
+	text-align: center;
+	position: relative;
+	letter-spacing: 0.1em;	/*文字間隔を少し広くする*/
+	padding-top: 1rem;		/*ここを調整すると、見出しテキストとボーダーの間の余白を調整できます。お好みで。*/
+}
+
+/*小文字（kazari title）*/
+#contents h2.titleset5-parts span {
+	display: block;
+	font-weight: normal;
+	font-size: 0.5em;		/*文字サイズ。見出しの50%*/
+	opacity: 0.5;			/*透明度。色を50%だけ出す。*/
+}
+
+/*見出し上のボーダー*/
+#contents h2.titleset5-parts::before {
+	content: "";
+	position: absolute;
+	height: 3px;	/*ボーダーの高さ*/
+	width: 50px;	/*ボーダーの幅。変更する際は、下のleftの行も変更します。*/
+	left: calc(50% - 25px);	/*左からの配置場所。ここの25px部分は、上のwidthの半分。*/
+	top: 0px;
+	background: #ccc;	/*線の色*/
+}
+
+
+/*h3タグ
+---------------------------------------------------------------------------*/
+#contents h3.titleset5-parts {
+	font-size: 1.6rem;		/*文字サイズ。1.6倍。*/
+	letter-spacing: 0.1em;	/*文字間隔を少し広くする*/
+	padding-left: 1rem;		/*左に空ける余白*/
+	padding-right: 1rem;	/*右に空ける余白*/
+}
+
+/*小文字（kazari title）*/
+#contents h3.titleset5-parts span {
+	display: block;
+	font-weight: normal;
+	font-size: 0.5em;		/*文字サイズ。見出しの50%*/
+	opacity: 0.5;			/*透明度。色を50%だけ出す。*/
+}
+/* =========================
+   list-normal2 スマホ最適化（追記用）
+   ========================= */
+@media screen and (max-width: 600px) {
+
+  /* 1) このsectionだけ外側余白をゼロにする（他のsectionは壊さない） */
+  section.lp-list-normal2 {
+    padding: 0 !important;
+  }
+
+  /* 2) 見出しや説明文のブロックは、読みやすい最小余白だけ確保 */
+  section.lp-list-normal2 > h2,
+  section.lp-list-normal2 > .disc {
+    padding: 16px;
+    margin: 0;
+  }
+
+  /* 3) list-normal2本体は画面いっぱいに */
+  section.lp-list-normal2 .parts-list-normal2 {
+    margin-bottom: 0 !important; /* ブロック間の隙間を消す（好みで） */
+    padding: 24px 16px;          /* 内側はスマホで読みやすい余白に調整 */
+  }
+
+  /* 4) ハンバーガーに被りやすい左上のテキストを少しだけ逃がす
+        “画面いっぱい感”を損なわない最小限の逃げ */
+  section.lp-list-normal2 .parts-list-normal2 .text-parts {
+    width: 100%;
+    max-width: 36rem;       /* 長文でも読みやすい上限 */
+    padding-top: 56px;      /* ←ハンバーガー分の逃げ（必要最小限） */
+  }
+
+  /* 5) ハンバーガー自体を小さくして邪魔を減らす（表示は維持） */
+  #menubar_hdr {
+    width: 64px;
+    height: 64px;
+    padding: 14px;
+  }
+
+  /* ×印のときのバー幅も縮める（見た目が崩れにくい） */
+  #menubar_hdr.ham span:nth-of-type(1),
+  #menubar_hdr.ham span:nth-of-type(3) {
+    width: 34px;
+  }
+
+  /* 6) iPhoneのノッチ等の安全領域にも配慮（あってもなくてもOK） */
+  #menubar_hdr {
+    padding-top: calc(14px + env(safe-area-inset-top));
+    padding-left: calc(14px + env(safe-area-inset-left));
+  }
+}
+/* =========================
+   list-normal2 スマホ最適化【決定版】
+   ========================= */
+@media screen and (max-width: 600px) {
+
+  /* sectionの外側余白を完全に消す */
+  section {
+    padding: 0 !important;
+  }
+
+  /* list-normal2のカードは画面いっぱいに */
+  .parts-list-normal2 {
+    padding: 24px 16px !important; /* ← 中身だけ余白 */
+    margin-bottom: 0 !important;
+  }
+
+  /* テキストブロックはフル幅 */
+  .parts-list-normal2 .text-parts {
+    width: 100%;
+  }
+}
+/* =========================
+   list-normal2 スマホ完全フル幅化
+   ========================= */
+@media screen and (max-width: 600px) {
+
+  /* list-normal2 自体の余白を殺す */
+  .parts-list-normal2 {
+    padding: 0 !important;
+  }
+
+  /* 文字ブロック側にだけ余白を戻す（読みやすさ用） */
+  .parts-list-normal2 .text-parts {
+    padding: 20px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
