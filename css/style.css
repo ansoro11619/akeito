@@ -27,10 +27,10 @@
 /*CSSカスタムプロパティ（サイト全体を一括管理する為の設定）
 ---------------------------------------------------------------------------*/
 :root {
-	--primary-color: #fa754c;		/*テンプレートのメインとなる色*/
+	--primary-color: #fe8A23;		/*テンプレートのメインとなる色*/
 	--primary-text-color: #fff;		/*メインの上で使うテキスト色*/
 	
-    --accent-color: #3c5082;		/*テンプレートのアクセントとなる色*/
+    --accent-color: #3c5083;		/*テンプレートのアクセントとなる色*/
     --accent-text-color: #fff;		/*アクセントの上で使うテキスト色*/
 }
 
@@ -873,108 +873,39 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 	background: #ccc;	/*線の色*/
 }
 
+/*h2タグ
+---------------------------------------------------------------------------*/
+#contents h2.titleset4-parts {
+	font-size: 1.3rem;		/*文字サイズ。bodyで設定しているfont-sizeに対して1.3倍。*/
+	padding: 0.4rem 2rem;	/*h2内の余白。上下、左右への順番。*/
+	border-radius: 100px;	/*角を少しだけ丸くする。適当に大きめサイズであればOK。*/
+	background: #eee;		/*背景色*/
+	color: #555;			/*文字色*/
+}
+
 
 /*h3タグ
 ---------------------------------------------------------------------------*/
-#contents h3.titleset5-parts {
-	font-size: 1.6rem;		/*文字サイズ。1.6倍。*/
-	letter-spacing: 0.1em;	/*文字間隔を少し広くする*/
-	padding-left: 1rem;		/*左に空ける余白*/
-	padding-right: 1rem;	/*右に空ける余白*/
+#contents h3.titleset4-parts {
+	font-size: 1.2rem;		/*文字サイズ。bodyで設定しているfont-sizeに対して1.2倍。*/
+	padding: 0.4rem 2rem;	/*h2内の余白。上下、左右への順番。*/
+	border-radius: 100px;	/*角を少しだけ丸くする。適当に大きめサイズであればOK。*/
+	border: 1px solid #ccc;	/*枠線の幅、線種、色*/
 }
 
-/*小文字（kazari title）*/
-#contents h3.titleset5-parts span {
-	display: block;
-	font-weight: normal;
-	font-size: 0.5em;		/*文字サイズ。見出しの50%*/
-	opacity: 0.5;			/*透明度。色を50%だけ出す。*/
 }
-/* =========================
-   list-normal2 スマホ最適化（追記用）
-   ========================= */
-@media screen and (max-width: 600px) {
 
-  /* 1) このsectionだけ外側余白をゼロにする（他のsectionは壊さない） */
-  section.lp-list-normal2 {
-    padding: 0 !important;
-  }
+.parts-list-normal2 .text-parts {
+  padding-left: 0;
+  padding-right: 0;}
 
-  /* 2) 見出しや説明文のブロックは、読みやすい最小余白だけ確保 */
-  section.lp-list-normal2 > h2,
-  section.lp-list-normal2 > .disc {
-    padding: 16px;
-    margin: 0;
-  }
-
-  /* 3) list-normal2本体は画面いっぱいに */
-  section.lp-list-normal2 .parts-list-normal2 {
-    margin-bottom: 0 !important; /* ブロック間の隙間を消す（好みで） */
-    padding: 24px 16px;          /* 内側はスマホで読みやすい余白に調整 */
-  }
-
-  /* 4) ハンバーガーに被りやすい左上のテキストを少しだけ逃がす
-        “画面いっぱい感”を損なわない最小限の逃げ */
-  section.lp-list-normal2 .parts-list-normal2 .text-parts {
-    width: 100%;
-    max-width: 36rem;       /* 長文でも読みやすい上限 */
-    padding-top: 56px;      /* ←ハンバーガー分の逃げ（必要最小限） */
-  }
-
-  /* 5) ハンバーガー自体を小さくして邪魔を減らす（表示は維持） */
-  #menubar_hdr {
-    width: 64px;
-    height: 64px;
-    padding: 14px;
-  }
-
-  /* ×印のときのバー幅も縮める（見た目が崩れにくい） */
-  #menubar_hdr.ham span:nth-of-type(1),
-  #menubar_hdr.ham span:nth-of-type(3) {
-    width: 34px;
-  }
-
-  /* 6) iPhoneのノッチ等の安全領域にも配慮（あってもなくてもOK） */
-  #menubar_hdr {
-    padding-top: calc(14px + env(safe-area-inset-top));
-    padding-left: calc(14px + env(safe-area-inset-left));
-  }
+.box-title {
+  border: 1px solid #fff;
+  padding: 1em;
+  display: block;　 
+　text-align: left;
+}.box-title {
+  margin-left: 0;
+  margin-right: auto;
 }
-/* =========================
-   list-normal2 スマホ最適化【決定版】
-   ========================= */
-@media screen and (max-width: 600px) {
 
-  /* sectionの外側余白を完全に消す */
-  section {
-    padding: 0 !important;
-  }
-
-  /* list-normal2のカードは画面いっぱいに */
-  .parts-list-normal2 {
-    padding: 24px 16px !important; /* ← 中身だけ余白 */
-    margin-bottom: 0 !important;
-  }
-
-  /* テキストブロックはフル幅 */
-  .parts-list-normal2 .text-parts {
-    width: 100%;
-  }
-}
-/* =========================
-   list-normal2 スマホ完全フル幅化
-   ========================= */
-@media screen and (max-width: 600px) {
-
-  /* list-normal2 自体の余白を殺す */
-  .parts-list-normal2 {
-    padding: 0 !important;
-  }
-
-  /* 文字ブロック側にだけ余白を戻す（読みやすさ用） */
-  .parts-list-normal2 .text-parts {
-    padding: 20px 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
