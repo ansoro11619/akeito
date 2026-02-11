@@ -939,11 +939,12 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 /* スマホ：lp-list-normal2 を画面端まで強制フル幅 */
 @media screen and (max-width: 600px) {
 
-  section.lp-list-normal2 {
+@media screen and (max-width: 600px) {
+  section.lp-list-normal2{
+    width: 100% !important;      /* 100vw をやめる */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     padding: 0 !important;
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
   }
 
   .parts-list-normal2 {
@@ -956,9 +957,16 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
     max-width: none !important;     /* ←これ重要：スマホの“空き”対策 */
     padding: 16px !important;       /* 文字の余白（0にすると端ぴったり） */
   }
-}
 @media screen and (max-width: 600px) {
-  html, body {
-    overflow-x: hidden !important;
+
+  h2.box-title {
+    display: block !important;   /* inline-block解除 */
+    text-align: left !important; /* 左寄せ */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
+
+}
+.parts-list-normal2 h3 span:not(.large-parts) {
+  right: 12px !important;   /* 数字を増やすとさらに内側へ */
 }
