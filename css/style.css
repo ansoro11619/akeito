@@ -920,54 +920,40 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 }
 
 /* =========================
-   lp-list-normal2：全部左寄せ＆スマホは端まで
+   lp-list-normal2：全部左寄せ＆スマホは端まで（確定版）
    ========================= */
 
-/* 交互配置（右寄せ）を無効化＝全部左寄せに統一 */
+/* reverse-parts が残っていても左寄せに固定 */
 .parts-list-normal2 .text-parts.reverse-parts {
   margin-left: 0 !important;
 }
 
-/* テキストブロックを左寄せに固定（読みやすい幅） */
+/* PC含め全部左寄せ（読みやすい幅にしたいなら max-width はPCだけ） */
 .parts-list-normal2 .text-parts {
   width: 100% !important;
-  max-width: 40rem;            /* 好みで調整OK */
   margin-left: 0 !important;
   margin-right: auto !important;
   box-sizing: border-box;
 }
 
-/* スマホ：lp-list-normal2だけ左右余白ゼロで端まで */
-@media screen and (max-width: 600px) {
-  section.lp-list-normal2 {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
+/* スマホ：lp-list-normal2 を画面端まで強制フル幅 */
 @media screen and (max-width: 600px) {
 
-  /* lp-list-normal2 を画面幅いっぱいに強制（親の余白を無視） */
-  section.lp-list-normal2{
+  section.lp-list-normal2 {
     padding: 0 !important;
     width: 100vw !important;
     margin-left: calc(50% - 50vw) !important;
     margin-right: calc(50% - 50vw) !important;
   }
 
-  /* 中のカードも端まで */
-  .parts-list-normal2{
+  .parts-list-normal2 {
     margin: 0 !important;
     width: 100% !important;
+    padding: 0 !important;          /* 背景を端まで */
   }
 
-  /* カード内の余白もゼロにする（背景を端まで見せたい場合） */
-  .parts-list-normal2{
-    padding: 0 !important;
-  }
-
-  /* 文字だけは少し内側に残す（端に貼り付くのが嫌なら） */
-  .parts-list-normal2 .text-parts{
-    padding: 16px !important;   /* 0にすれば文字も完全端 */
-    box-sizing: border-box;
+  .parts-list-normal2 .text-parts {
+    max-width: none !important;     /* ←これ重要：スマホの“空き”対策 */
+    padding: 16px !important;       /* 文字の余白（0にすると端ぴったり） */
   }
 }
