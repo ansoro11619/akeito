@@ -957,3 +957,8 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
     padding: 16px !important;       /* 文字の余白（0にすると端ぴったり） */
   }
 }
+@media screen and (max-width: 600px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+}
