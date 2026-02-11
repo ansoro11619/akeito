@@ -28,7 +28,7 @@
 ---------------------------------------------------------------------------*/
 :root {
 	--primary-color: #fe8A23;		/*テンプレートのメインとなる色*/
-	--primary-text-color: #fff;		/*メインの上で使うテキスト色*/
+	--primary-text-color: #fffcf7;		/*メインの上で使うテキスト色*/
 	
     --accent-color: #3c5083;		/*テンプレートのアクセントとなる色*/
     --accent-text-color: #fff;		/*アクセントの上で使うテキスト色*/
@@ -711,7 +711,7 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 
 
 /*テキストの配置場所を入れ替えたい場合のスタイル。*/
-.parts-list-normal2 .text-parts.reverse-parts {
+.parts-list-normal2 .text-parts. {
 	margin-left: auto;
 }
 
@@ -893,19 +893,81 @@ animationの行の「0.1s」が文字の出現のなめらかさで、大きい�
 	border: 1px solid #ccc;	/*枠線の幅、線種、色*/
 }
 
-}
-
 .parts-list-normal2 .text-parts {
   padding-left: 0;
-  padding-right: 0;}
+  padding-right: 0;
+}
 
 .box-title {
   border: 1px solid #fff;
   padding: 1em;
-  display: block;　 
-　text-align: left;
-}.box-title {
-  margin-left: 0;
-  margin-right: auto;
+  display: block;
+　margin-left: 0;
+　margin-right: auto; text-align: left;
+}
+@media screen and (max-width: 600px) {
+  .parts-list-normal2.image1-parts,
+  .parts-list-normal2.image2-parts,
+  .parts-list-normal2.image3-parts {
+    background-position: center 15% !important; /* 上寄りにする */
+  }
+}
+@media screen and (max-width: 600px) {
+  h2.box-title {
+    text-align: left !important;
+    display: block;           /* inline-block を解除 */
+  }
 }
 
+/* =========================
+   lp-list-normal2：全部左寄せ＆スマホは端まで
+   ========================= */
+
+/* 交互配置（右寄せ）を無効化＝全部左寄せに統一 */
+.parts-list-normal2 .text-parts.reverse-parts {
+  margin-left: 0 !important;
+}
+
+/* テキストブロックを左寄せに固定（読みやすい幅） */
+.parts-list-normal2 .text-parts {
+  width: 100% !important;
+  max-width: 40rem;            /* 好みで調整OK */
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+/* スマホ：lp-list-normal2だけ左右余白ゼロで端まで */
+@media screen and (max-width: 600px) {
+  section.lp-list-normal2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+@media screen and (max-width: 600px) {
+
+  /* lp-list-normal2 を画面幅いっぱいに強制（親の余白を無視） */
+  section.lp-list-normal2{
+    padding: 0 !important;
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+  }
+
+  /* 中のカードも端まで */
+  .parts-list-normal2{
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* カード内の余白もゼロにする（背景を端まで見せたい場合） */
+  .parts-list-normal2{
+    padding: 0 !important;
+  }
+
+  /* 文字だけは少し内側に残す（端に貼り付くのが嫌なら） */
+  .parts-list-normal2 .text-parts{
+    padding: 16px !important;   /* 0にすれば文字も完全端 */
+    box-sizing: border-box;
+  }
+}
